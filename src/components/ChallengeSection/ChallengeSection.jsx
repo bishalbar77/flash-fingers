@@ -2,7 +2,7 @@ import React from 'react';
 import "./ChallengeSection.css";
 import TestContainer from "../TestContainer/TestContainer";
 
-const ChallengeSection = ({ selectedParagraph, words, characters, wpm, timeRemaining, timerStarted}) => {
+const ChallengeSection = ({ selectedParagraph, words, characters, wpm, timeRemaining, timerStarted, testInfo, onInputChange }) => {
     return (
         <div className="challenge-section-container">
             <h1 data-aos="fade-down" className="challenge-section-header">
@@ -15,6 +15,8 @@ const ChallengeSection = ({ selectedParagraph, words, characters, wpm, timeRemai
                 wpm={wpm}
                 timeRemaining={timeRemaining}
                 timerStarted={timerStarted}
+                testInfo={testInfo}
+                onInputChange={onInputChange}
             />
         </div>
     )
