@@ -4,6 +4,7 @@ import Nav from "../Nav/Nav";
 import Landing from "../Landing/Landing";
 import Footer from "../Footer/Footer";
 import ChallengeSection from "../ChallengeSection/ChallengeSection";
+import { SAMPLE_PARAGRAPHS } from "../../data/sampleParagraphs";
 
 const totalTime = 5;
 const API = "http://metaphorpsum.com/paragraphs/1/11";
@@ -38,7 +39,7 @@ class App extends React.Component {
         }, 1000)
     };
 
-    startAgain = () => this.fetchNewParagraph();;
+    startAgain = () => this.fetchNewParagraph();
 
     handleUserInput = (inputValue) => {
         if(!this.state.timerStarted) {
@@ -88,8 +89,24 @@ class App extends React.Component {
         });
     }
 
+    fetchStaticParagraph = () => {
+        const data = SAMPLE_PARAGRAPHS[
+            Math.floor(Math.random() * SAMPLE_PARAGRAPHS.length)
+        ]
+        const selectedParagraphArray = this.state.selectedParagraph.split("");
+        const testInfo = selectedParagraphArray.map(selectedLetter => {
+            return {
+                testLetter :selectedLetter,
+                status: "notAttempted",
+            };
+        });
+        this.setState({ testInfo, selectedParagraph: data });
+        this.setState({ ...defaultState });
+    }
+
     fetchNewParagraph () {
         fetch(API).then((response) => response.text()).then((data) => {
+            this.setState({ ...defaultState });
             this.setState({ selectedParagraph: data});
             const selectedParagraphArray = this.state.selectedParagraph.split("");
             const testInfo = selectedParagraphArray.map(selectedLetter => {
@@ -98,7 +115,7 @@ class App extends React.Component {
                     status: "notAttempted",
                 };
             });
-            this.setState({ defaultState, testInfo });
+            this.setState({ testInfo });
         });
     }
     componentDidMount () {
