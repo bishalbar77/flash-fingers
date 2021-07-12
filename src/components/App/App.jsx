@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import ChallengeSection from "../ChallengeSection/ChallengeSection";
 import { SAMPLE_PARAGRAPHS } from "../../data/sampleParagraphs";
 
-const totalTime = 5;
+const totalTime = 60;
 const API = "http://metaphorpsum.com/paragraphs/1/11";
 const defaultState = {
     selectedParagraph: "Few can name a piecemeal poultry that isn't an unmaimed church. Some posit the uncleaned broker to be less than grating. To be more specific, few can name an hourlong ring that isn't a hallowed plaster. We know that before bangles, violets were only underwears. A witness sees an oboe as a fragile feast. A noodle is a freeborn brother-in-law. A barebacked revolve without squids is truly a dinosaur of spindly pests. A dad is an engine's light. Though we assume the latter, a slave is the relation of a trial. Some posit the hunchbacked hope to be less than grumpy. A nitrogen is an unkissed icicle.",
@@ -106,9 +106,9 @@ class App extends React.Component {
     }
 
     fetchNewParagraph () {
-        fetch(API).then((response) => response.text()).then((data) => {
+        // fetch(API).then((response) => response.text()).then((data) => {
             this.setState({ ...defaultState });
-            this.setState({ selectedParagraph: data});
+        //    this.setState({ selectedParagraph: data});
             const selectedParagraphArray = this.state.selectedParagraph.split("");
             const testInfo = selectedParagraphArray.map(selectedLetter => {
                 return {
@@ -117,7 +117,7 @@ class App extends React.Component {
                 };
             });
             this.setState({ testInfo });
-        });
+        // });
     }
     componentDidMount () {
         this.fetchNewParagraph();
