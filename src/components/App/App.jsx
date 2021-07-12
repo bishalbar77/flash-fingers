@@ -120,7 +120,7 @@ class App extends React.Component {
         });
     }
     componentDidMount () {
-        this.fetchStaticParagraph();
+        this.fetchNewParagraph();
     }
 
     render() {
