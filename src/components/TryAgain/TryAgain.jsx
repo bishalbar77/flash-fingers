@@ -4,7 +4,8 @@ import "./TryAgain.css";
 const TryAgain = ({
     words,
     characters,
-    wpm
+    wpm,
+    startAgain
 }) => {
     return (
         <div className="try-again-container">
@@ -21,7 +22,9 @@ const TryAgain = ({
                 </p>
             </div>
             <div className="social-container">
-                <button className="button start-again-btn">
+                <button 
+                    onClick = {() => startAgain()}
+                    className="button start-again-btn">
                     Re-try
                 </button>
                 <button 
